@@ -1,5 +1,10 @@
-function calculateTotalPrice() {
-    let prices = document.querySelectorAll('.prices');
+const getSumBtn = document.createElement("button");
+getSumBtn.append("Get Total Price");
+document.body.appendChild(getSumBtn);
+
+const getSum = () => {
+//Add your code here
+	 let prices = document.querySelectorAll('.prices');
     let totalPrice = 0;
 
     prices.forEach(price => {
@@ -14,17 +19,13 @@ function calculateTotalPrice() {
     } else {
         totalRow = document.createElement('tr');
         totalRow.className = 'total-row';
-        totalRow.innerHTML = `<td class="total-price" colspan="100%">Total: $${totalPrice.toFixed(2)}</td>`;
-        table.appendChild(totalRow);
+        totalRow.innerHTML = `<td colspan="2" class="total-price">Total: $${totalPrice.toFixed(2)}</td>`;
+        table.tBodies[0].appendChild(totalRow);
     }
-}
+};
 
-// Calculate total price initially
-calculateTotalPrice();
+  
 
-// Update total price when prices change (if prices are editable)
-let prices = document.querySelectorAll('.prices');
-prices.forEach(price => {
-    price.addEventListener('input', calculateTotalPrice);
-});
+
+getSumBtn.addEventListener("click", getSum);
 
