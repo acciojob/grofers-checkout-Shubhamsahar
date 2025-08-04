@@ -1,32 +1,22 @@
-const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
-document.body.appendChild(getSumBtn);
+// Get all the price elements
+const priceElements = document.querySelectorAll('.price');
+let total = 0;
 
-const getSum = () => {
-//Add your code here
-	const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
-document.body.appendChild(getSumBtn);
+// Sum up all the prices
+priceElements.forEach(price => {
+  total += parseFloat(price.textContent);
+});
 
-const totalPriceElement = document.createElement("p");
-document.body.appendChild(totalPriceElement);
+// Create a new row
+const totalRow = document.createElement('tr');
+const totalCell = document.createElement('td');
+totalCell.colSpan = 2;
+totalCell.style.fontWeight = 'bold';
+totalCell.textContent = `Total Price: Rs ${total}`;
 
-const getSum = () => {
-    let prices = document.querySelectorAll('.prices');
-    let totalPrice = 0;
+// Append the cell to the row
+totalRow.appendChild(totalCell);
 
-    prices.forEach(price => {
-        totalPrice += parseFloat(price.textContent);
-    });
-
-    totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
-};
-
-getSumBtn.addEventListener("click", getSum);
-
-
-  
-};
-
-getSumBtn.addEventListener("click", getSum);
-
+// Append the row to the table
+const table = document.querySelector('table');
+table.appendChild(totalRow);
