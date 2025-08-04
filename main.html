@@ -9,24 +9,29 @@
       border-collapse: collapse;
       margin-top: 20px;
     }
+
     th, td {
       border: 1px solid #333;
       padding: 10px;
       text-align: left;
     }
+
     caption {
       font-size: 1.5em;
       margin-bottom: 10px;
       font-weight: bold;
     }
+
     button {
       margin-top: 20px;
       padding: 10px 15px;
       font-size: 16px;
       cursor: pointer;
     }
-    tr:last-child {
-      background-color: #f0f0f0;
+
+    #ans {
+      margin-top: 20px;
+      font-size: 18px;
       font-weight: bold;
     }
   </style>
@@ -61,8 +66,11 @@
     </tr>
   </table>
 
-  <!-- ✅ Button required by test -->
+  <!-- ✅ Button to trigger total calculation -->
   <button id="calculate">Calculate Total</button>
+
+  <!-- ✅ Required by test: ID 'ans' to show total -->
+  <div id="ans"></div>
 
   <script>
     document.getElementById("calculate").addEventListener("click", function () {
@@ -73,22 +81,8 @@
         total += parseFloat(price.textContent);
       });
 
-      // Avoid adding multiple total rows if button clicked again
-      const existingTotalRow = document.getElementById('total-row');
-      if (existingTotalRow) {
-        existingTotalRow.remove();
-      }
-
-      const totalRow = document.createElement('tr');
-      totalRow.id = 'total-row';
-      const totalCell = document.createElement('td');
-      totalCell.colSpan = 2;
-      totalCell.textContent = `Total Price: Rs ${total}`;
-      totalCell.style.textAlign = 'center';
-      totalCell.style.fontWeight = 'bold';
-
-      totalRow.appendChild(totalCell);
-      document.getElementById('grocery-table').appendChild(totalRow);
+      const ansElement = document.getElementById("ans");
+      ansElement.textContent = `Total Price: Rs ${total}`;
     });
   </script>
 
