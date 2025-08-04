@@ -1,22 +1,20 @@
-// Get all the price elements
+// Select all the elements with class 'price'
 const priceElements = document.querySelectorAll('.price');
 let total = 0;
 
-// Sum up all the prices
+// Calculate the total price
 priceElements.forEach(price => {
   total += parseFloat(price.textContent);
 });
 
-// Create a new row
+// Create a new row and cell for the total
 const totalRow = document.createElement('tr');
 const totalCell = document.createElement('td');
 totalCell.colSpan = 2;
-totalCell.style.fontWeight = 'bold';
 totalCell.textContent = `Total Price: Rs ${total}`;
+totalCell.style.textAlign = 'center';
+totalCell.style.fontWeight = 'bold';
 
-// Append the cell to the row
+// Append the cell to the row and the row to the table
 totalRow.appendChild(totalCell);
-
-// Append the row to the table
-const table = document.querySelector('table');
-table.appendChild(totalRow);
+document.querySelector('table').appendChild(totalRow);

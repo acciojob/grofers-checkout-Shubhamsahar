@@ -1,2 +1,24 @@
 
 /* Your CSS Code here. */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+}
+
+caption {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+tr:last-child {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
